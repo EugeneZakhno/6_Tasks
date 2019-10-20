@@ -1,4 +1,4 @@
-package by.epam.course.application.archive.deed;
+package deed;
 
 import java.util.Calendar;
 
@@ -32,7 +32,7 @@ public class Deed {
         if(student.getStatus()==StudentStatus.ENROLLED) {
             student.setFaculty(faculty);
         }else{
-            System.out.println("Данный студент выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled! ");
         }
     }
 
@@ -45,7 +45,7 @@ public class Deed {
                 return true;
             }
         }else{
-            System.out.println("Данный студент выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled! ");
             return false;
         }
     }
@@ -54,7 +54,7 @@ public class Deed {
         if(student.getStatus()==StudentStatus.ENROLLED) {
             student.setCourse(course);
         }else{
-            System.out.println("Данный студент выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled!");
         }
     }
 
@@ -64,7 +64,7 @@ public class Deed {
                 this.characteristic = characteristic;
             }
         }else{
-            System.out.println("Данный студент выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled!");
         }
     }
 
@@ -101,7 +101,7 @@ public class Deed {
         if(student.getStatus()==StudentStatus.ENROLLED) {
             student.setStatus(StudentStatus.DEDUCTED);
         }else{
-            System.out.println("Данный студент уже выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled!");
         }
     }
 
@@ -110,7 +110,7 @@ public class Deed {
         if(student.getStatus()==StudentStatus.ENROLLED) {
             student.setStatus(StudentStatus.GRADUATED);
         }else{
-            System.out.println("Данный студент уже выпущен или отчислен!");
+            System.out.println("This student is graduated or expelled!");
         }
     }
 
@@ -119,23 +119,23 @@ public class Deed {
         if(student.getStatus()!=StudentStatus.ENROLLED){
             student.setStatus(StudentStatus.ENROLLED);
         }else{
-            System.out.println("Данный студент уже зачислен!");
+            System.out.println("This student is already enrolled!");
         }
     }
 
     @Override
     public String toString(){
         String string=new String();
-        string+="Cоздано "+dateOfCreating.getTime().toString()+"\n";
-        string+="Дело №"+numOfDeed+"\n";
-        string+="Имя: "+student.getName()+"\n";
-        string+="Факультет: "+student.getFaculty()+"\n";
+        string+="Created "+dateOfCreating.getTime().toString()+"\n";
+        string+="Matter №"+numOfDeed+"\n";
+        string+="Name: "+student.getName()+"\n";
+        string+="Faculty: "+student.getFaculty()+"\n";
         if(student.getStatus()==StudentStatus.ENROLLED){
-            string+="Курс: "+student.getCourse()+"\n";
+            string+="Course: "+student.getCourse()+"\n";
         }
-        string+="Год зачисления: "+student.getYearOfEnrolling()+"\n";
-        string+="Статус: "+student.getStatus()+"\n\n";
-        string+="Характеристика:\n"+characteristic+"\n";
+        string+="Year of enrollment: "+student.getYearOfEnrolling()+"\n";
+        string+="Status: "+student.getStatus()+"\n\n";
+        string+="Characteristic:\n"+characteristic+"\n";
         return string;
     }
 

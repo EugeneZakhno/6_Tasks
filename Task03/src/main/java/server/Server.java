@@ -1,7 +1,7 @@
-package by.epam.course.application.archive.server;
+package server;
 
-import by.epam.course.application.archive.user.*;
-import by.epam.course.application.archive.deed.*;
+import user.*;
+import deed.*;
 import javax.xml.bind.*;
 import javax.xml.bind.annotation.*;
 import java.io.*;
@@ -16,7 +16,7 @@ public class Server {
     private List<User> users = new ArrayList<User>();
     private static UserFactory factory=new UserFactory();
     private File file;//выходной файл для логов пользователей
-    private final String deffoltPath="F:\\Проекты\\Java\\java_online\\src\\by\\epam\\course\\application\\archive\\server\\Users.xml";
+    private final String deffoltPath="..\\resources\\Users.xml";
 
     public Server(){
         file=new File(deffoltPath);
@@ -55,7 +55,7 @@ public class Server {
                 users.add(users.size(), users.get(index));
                 users.remove(index);
             }else{
-                System.out.println("Введен неверный пароль!");
+                System.out.println("Invalid password entered!");
             }
         }else{
             addUser(login, password);
@@ -125,7 +125,7 @@ public class Server {
                 response+=deed.toString();
             }
         }else{
-            response="Не найдено!";
+            response="not found!";
         }
         return response;
     }
@@ -144,7 +144,7 @@ public class Server {
             switch (choice) {
                 case 1: {
                     login(req[1].trim(), req[2].trim());
-                    response = "Операция совершена успешно";
+                    response = "Operation completed successfully ";
                     break;
                 }
 
@@ -171,9 +171,9 @@ public class Server {
                 case 6: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).addDeed(req[1], req[2], Integer.parseInt(req[3]), Integer.parseInt(req[4]));
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied ";
                     }
                     break;
                 }
@@ -181,9 +181,9 @@ public class Server {
                 case 7: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).removeDeed(Integer.parseInt(req[1]));
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied ";
                     }
                     break;
                 }
@@ -191,9 +191,9 @@ public class Server {
                 case 8: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).removeIfNotEnrolled();
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied";
                     }
                     break;
                 }
@@ -201,9 +201,9 @@ public class Server {
                 case 9: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).chooseDeed(Integer.parseInt(req[1]));
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied";
                     }
                     break;
                 }
@@ -211,9 +211,9 @@ public class Server {
                 case 10: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).sort();
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied ";
                     }
                     break;
                 }
@@ -221,9 +221,9 @@ public class Server {
                 case 11: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).changeFaculty(req[1]);
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully ";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied ";
                     }
                     break;
                 }
@@ -231,9 +231,9 @@ public class Server {
                 case 12: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).incCourse();
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied";
                     }
                     break;
                 }
@@ -241,9 +241,9 @@ public class Server {
                 case 13: {
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).changeCourse(Integer.parseInt(req[1]));
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied";
                     }
                     break;
                 }
@@ -251,15 +251,15 @@ public class Server {
                 case 14:{
                     if (users.get(users.size() - 1).isAdmin()) {
                         ((Administrator) users.get(users.size() - 1)).changePassword(req[1], req[2]);
-                        response = "Операция совершена успешно";
+                        response = "Operation completed successfully";
                     } else {
-                        response = "Отказано в доступе";
+                        response = "Access denied";
                     }
                     break;
                 }
 
                 default: {
-                    response = "Неверный код операции!";
+                    response = "Invalid opcode !";
                     break;
                 }
             }

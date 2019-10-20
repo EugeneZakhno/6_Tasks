@@ -1,4 +1,4 @@
-package by.epam.course.application.archive.user;
+package user;
 
 /*
     Класс для авторизации пользователей

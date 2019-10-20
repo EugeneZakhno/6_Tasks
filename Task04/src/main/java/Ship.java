@@ -1,5 +1,3 @@
-package port;
-
 import java.util.Random;
 
 public class Ship {

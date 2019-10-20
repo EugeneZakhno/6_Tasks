@@ -1,4 +1,4 @@
-package by.epam.course.application.archive.deed;
+package deed;
 
 /*
     Класс для представления студента

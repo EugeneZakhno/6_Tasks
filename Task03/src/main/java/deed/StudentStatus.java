@@ -1,11 +1,4 @@
-package by.epam.course.application.archive.deed;
-
-/*
-    Возможные статусы студента:
-        выпущен(окончил университет)
-        зачислен(или учится)
-        отчислен
- */
+package deed;
 
 public enum StudentStatus {
     GRADUATED,

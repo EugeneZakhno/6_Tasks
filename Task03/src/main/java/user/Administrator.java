@@ -1,6 +1,6 @@
-package by.epam.course.application.archive.user;
+package user;
 
-import by.epam.course.application.archive.deed.Deed;
+import deed.Deed;
 /*
     Класс для представления администратора
     Доп возможности:

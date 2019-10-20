@@ -1,6 +1,6 @@
-package by.epam.course.application.archive.user;
+package user;
 
-import by.epam.course.application.archive.deed.*;
+import deed.*;
 import java.util.List;
 
 /*
